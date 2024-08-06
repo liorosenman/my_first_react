@@ -7,27 +7,34 @@ const Market = () => {
     const [totalCost, settotalCost] = useState(0)
     const [cart, setCart] = useState([])
     const [amountToAdd, setamountToAdd] = useState(0)
+    const [index, setIndex] = useState(-1)
+    const [updatedCart, setUpdatedCart] = useState([])
 
-    const buyProduct = () => {
-        if(doesProductExist(descTemp)){   
-            setCart(cart[descTemp].amount += amountTemp)
+    const buyProduct = (descTemp, amountTemp, priceTemp) => {
+    //    console.log(descTemp, amountTemp, priceTemp)
+        setIndex(doesProductExist(descTemp))
+        console.log(index);
+        if(index != -1){  
+            console.log("exists");            
+            setUpdatedCart(...cart)
+            setUpdatedCart(updatedCart[index].amount += parseInt(amountTemp));
+            setCart(updatedCart);
         }
-        else{
-            console.log(amountTemp);   
-            setCart([...cart, {"desc":descTemp, "amount":amountTemp, "price":priceTemp} ])
+        else{  
+            console.log("new product");          
+            setCart([{desc:descTemp, amount:parseInt(amountTemp), price:parseInt(priceTemp)}, ...cart])
         }
 
         console.table(cart);
     } 
     
-
     const doesProductExist = (descTemp) => {
         for (let i = 0; i < cart.length; i++) {
             if (cart[i].desc === descTemp) {
-                return true
+                return i
             }    
         }
-        return false
+        return -1
     }
 
   return (
@@ -35,7 +42,7 @@ const Market = () => {
         Desc: <input type='text' onChange={(e) => setDescTemp(e.target.value)}></input>
         Amount: <input type='number' onChange={(e) => setAmountTemp(e.target.value)}></input>
         Price: <input type='number' onChange={(e) => setPriceTemp(e.target.value)}></input><br></br>
-        <button onClick={buyProduct}>BUY</button>
+        <button onClick={()=>buyProduct(descTemp, amountTemp, priceTemp)}>BUY</button>
         <h3>Total cost: </h3> 
         <h3>Number of products: </h3> 
     </div>
