@@ -1,20 +1,13 @@
 import React from 'react'
-import Exam1 from './Exam1';
-import Exam2 from './Exam2';
-import Exam3 from './Exam3';
-import StudentBoard from './StudentBoard';
-import Task0508 from './Task0508';
-import Task05083 from './Task05083';
-import Task05085 from './Task05085';
-import Market from './Market';
+import Use_effect_1 from './use_effect_1';
 
-const App = () => {
+function App() {
 
   return (
     <div>
-      <Market></Market>
-    </div>
+      <Use_effect_1></Use_effect_1>
+    </div>           
   );
 }
 
-export default App
+export default App;
