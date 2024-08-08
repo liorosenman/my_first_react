@@ -1,11 +1,11 @@
 import React from 'react'
-import Use_effect_1 from './use_effect_1';
+import Markethw from './Markethw';
 
 function App() {
 
   return (
     <div>
-      <Use_effect_1></Use_effect_1>
+      <Markethw></Markethw>
     </div>           
   );
 }
