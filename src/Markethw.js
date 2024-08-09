@@ -5,9 +5,10 @@ const Markethw = () => {
                 {id:1, desc:"rice", price:10},
                 {id:2, desc:"milk", price:7}];
     const [cart, setCart] = useState([])
-
+    const [total, setTotal] = useState(0)
     useEffect(() => {
         console.table(cart)
+        calcTotal(cart)
     }, [cart])
     
     
@@ -40,13 +41,21 @@ const Markethw = () => {
                 return i;
         return -1;
     }
+
+    const calcTotal = (cart) => {
+        let newTotal = 0;
+        cart.forEach(prod => {
+            newTotal += prod.price * prod.amount;
+        });
+        setTotal(newTotal);
+    }
     
   return (
     <div>
             {products.map(prod =>
              <div key={prod.id}><h3>Title: {prod.desc}, Price: {prod.price}</h3><button onClick={() => addToCart(prod, 1)}>ADD</button></div>)}
              <hr></hr>
-             <h3>CART:</h3>
+             <h3>CART --- SUM: {total} NIS </h3>
              <div>
             {cart.map(prod =>
             <div>
