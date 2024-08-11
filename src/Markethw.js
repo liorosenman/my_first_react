@@ -42,6 +42,10 @@ const Markethw = () => {
         return -1;
     }
 
+    const deleteProduct = (id) => {
+        setCart([...cart.filter(item => item.id != id)])
+    }
+
     const calcTotal = (cart) => {
         let newTotal = 0;
         cart.forEach(prod => {
@@ -62,6 +66,7 @@ const Markethw = () => {
                 <button onClick={() => addToCart(prod, -1)}>-</button>
                 {prod.desc}, {prod.price}, {prod.amount}
                 <button onClick={() => addToCart(prod, 1)}>+</button>
+                <button onClick={() => deleteProduct(prod.id)}>Delete</button>
              </div>
             )}</div>
     </div>
