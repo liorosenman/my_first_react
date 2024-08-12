@@ -3,11 +3,31 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import School from './School';
+import Home from './Home';
+import Books from './Books';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import Comedy from './Comedy';
+import Thriller from './Thriller';
+import Kids from './Kids';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<App/>}>
+          <Route element = {<h1>Please Select One</h1>}>
+          <Route path index = "/school" element = {<School />}/>
+          <Route path = "/home" element = {<Home />}/>
+          <Route path = "/books" element = {<Home />}/>
+            <Route index path = "/books/comedy" element = {<Comedy />}/>
+            <Route path = "/books/thriller" element = {<Thriller />}/>
+            <Route path = "/books/kids" element = {<Kids />}/>
+          </Route>
+      </Route>
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
 

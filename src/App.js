@@ -1,13 +1,18 @@
-import React from 'react'
-import Markethw from './Markethw';
-import MovingBtn from './MovingBtn';
+import React from 'react';
+import { Link, Outlet } from 'react-router-dom';
 
-function App() {
-
+const App = () => {
   return (
     <div>
-      <Markethw></Markethw>
-    </div>           
+      APP
+      <nav>
+        <Link to="/">Hello</Link> |{" "}
+        <Link to="/school">School</Link> |{" "}
+        <Link to="/home">IKEA</Link> |{" "}
+        <Link to="/books">Books</Link> |{" "}
+      </nav>
+      <Outlet />
+    </div>
   );
 }
 
